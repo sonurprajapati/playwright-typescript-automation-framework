@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
   await homePage.goto();
 });
 
-test.only('Contact Us Form', async ({ page }) => {
+test('Contact Us Form', async ({ page }) => {
   const homePage = new HomePage(page);
   const newPage = await homePage.clickContactUs();
   const contactUsPage = new ContactUsPage(newPage);
