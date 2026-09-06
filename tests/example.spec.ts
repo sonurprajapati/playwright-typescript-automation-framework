@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/HomePage';
 import { ContactUsPage } from '../pages/ContactUsPage';
-import { ToDoPage } from '../pages/ToDoPage';
+import { TodoPage } from '../pages/TodoPage';
 
 test.beforeEach(async ({ page }) => {
   const homePage = new HomePage(page);
@@ -21,7 +21,7 @@ test.only('Contact Us Form', async ({ page }) => {
 test('todo list', async ({ page }) => {
   const homePage = new HomePage(page);
   const todoPage = await homePage.clickToDoList();
-  const toDoPageFunction = new ToDoPage(todoPage);
+  const toDoPageFunction = new TodoPage(todoPage);
   await toDoPageFunction.addTodo('Home Notes');
   await toDoPageFunction.deleteTodo();
   await todoPage.close();

@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
 
-export class ToDoPage {
+export class TodoPage {
     constructor(private page: Page) {}
 
     async addTodo(todo: string) {
