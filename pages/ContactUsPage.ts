@@ -13,7 +13,7 @@ export class ContactUsPage {
     await this.page.locator('.feedback-input').first().fill(firstName);
     await this.page.getByPlaceholder('Last Name').fill(lastName);
     await this.page.locator('.feedback-input').nth(2).fill(email);
-    await this.page.locator('.feedback-input').nth(3).fill(comment);
+    await this.page.locator('.feedback-input').nth(4).fill(comment);
   }
 
   async verifyForm() {
