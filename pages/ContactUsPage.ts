@@ -10,10 +10,18 @@ export class ContactUsPage {
     email: string,
     comment: string
   ) {
+    // await this.page.locator('.feedback-input').first().click({'button': 'right'});
+    // await this.page.waitForTimeout(2000);
+    // await this.page.keyboard.press('Escape');
+    // await this.page.locator('body').click({ position: { x: 10, y: 10 } });
+    // await this.page.waitForTimeout(2000);
+    // await this.page.keyboard.press('Meta+v');
     await this.page.locator('.feedback-input').first().fill(firstName);
     await this.page.getByPlaceholder('Last Name').fill(lastName);
+    // await this.page.mouse.click(500, 500);
+    // await this.page.locator('.feedback-input').first().click();
     await this.page.locator('.feedback-input').nth(2).fill(email);
-    await this.page.locator('.feedback-input').nth(4).fill(comment);
+    await this.page.locator('.feedback-input').nth(3).fill(comment);
   }
 
   async verifyForm() {
