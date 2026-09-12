@@ -4,7 +4,7 @@ export class HomePage {
   constructor(private page: Page) {}
 
   async goto() {
-    await this.page.goto('https://webdriveruniversity.com/index.html');
+    await this.page.goto('https://webdriveruniversity.com/index.html', { waitUntil: 'domcontentloaded' });
   }
 
   async clickContactUs() {
