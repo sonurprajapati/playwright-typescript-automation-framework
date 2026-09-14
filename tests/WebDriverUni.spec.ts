@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/HomePage';
 import { ContactUsPage } from '../pages/ContactUsPage';
 import { TodoPage } from '../pages/TodoPage';
+import Ajv from 'ajv';
+import userSchema from '../schema/usersSchema.json';
 
 test.beforeEach(async ({ page }) => {
   const homePage = new HomePage(page);
@@ -13,6 +15,7 @@ test('Contact Us Form', async ({ page }) => {
   const newPage = await homePage.clickContactUs();
   const contactUsPage = new ContactUsPage(newPage);
   await contactUsPage.verifyForm();
+  // await page.pause();
   await contactUsPage.fillForm('Sonu', 'Prajapati', 'sonurprajapati1112@gmail.com', 'Test Comment');
   await contactUsPage.submit();
   await contactUsPage.goBackToHomepage();
@@ -95,4 +98,23 @@ test('file upload', async ({ page }) => {
   });
   await filePage.getByRole('button', {name: 'submit'}).click();
   await filePage.close();
+});
+
+test('GET users API - validate response schema', async ({ request }) => {
+  const response = await request.get('https://reqres.in/api/users?page=2', {
+    headers: {
+      'x-api-key': 'free_user_3JHetNgpOnfWox4FfmY1h1zSv7R',
+    },
+  });
+
+  const responseBody = await response.json();
+  const ajv = new Ajv({allErrors: true});
+
+  const validate = ajv.compile(userSchema);
+  const isValid = validate(responseBody);
+  if (!isValid) {
+    console.log('Schema validation failed:');
+    console.log(validate.errors);
+  }
+  expect(validate(responseBody)).toBe(true);
 });

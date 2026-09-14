@@ -31,6 +31,7 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
+    viewport: { width: 800, height: 1000 },
   },
 
   /* Configure projects for major browsers */
@@ -39,7 +40,7 @@ export default defineConfig({
       name: 'chromium',
       use: {
         browserName: 'chromium',
-        viewport: null,
+        // viewport: null,
         launchOptions: {
           args: ['--start-maximized'],
         },
