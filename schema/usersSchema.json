@@ -7,10 +7,10 @@
         "type": "number"
       },
       "per_page": {
-        "type": "string"
+        "type": "number"
       },
       "total": {
-        "type": "string"
+        "type": "number"
       },
       "total_pages": {
         "type": "number"
@@ -34,9 +34,6 @@
             },
             "avatar": {
               "type": "string"
-            },
-            "avatar1": {
-              "type": "string"
             }
           },
           "required": [
@@ -44,8 +41,7 @@
             "email",
             "first_name",
             "last_name",
-            "avatar",
-            "avatar1"
+            "avatar"
           ]
         }
       },
