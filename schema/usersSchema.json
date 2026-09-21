@@ -4,7 +4,7 @@
     "type": "object",
     "properties": {
       "page": {
-        "type": "number"
+        "type": "string"
       },
       "per_page": {
         "type": "number"

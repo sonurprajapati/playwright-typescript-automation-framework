@@ -80,7 +80,7 @@ test('iframe', async ({ page }) => {
     page.getByText('IFRAME').first().click()
   ]);
   await framePage.waitForLoadState('load');
-  const frame = framePage.frameLocator('#frame');
+  const frame = framePage.frameLocator('#frames');
   await frame.getByText('Our Products').click();
   await framePage.waitForTimeout(1000);
   await framePage.close();
