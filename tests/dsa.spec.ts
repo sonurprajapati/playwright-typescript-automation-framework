@@ -162,7 +162,7 @@ test('Sum of all numbers', () => {
 
 });
 
-test.only('Count positive and negative numbers', () => {
+test('Count positive and negative numbers', () => {
 
     let numbers = [12, -5, 8, -21, 0, 15, -7, 3, -10];
     let positive =0;
@@ -186,3 +186,89 @@ test.only('Count positive and negative numbers', () => {
 
 });
 
+test('Find the second largest number without sort', () => {
+    let numbers = [12, 45, 7, 89, 23, 56, 34];
+
+    let largest = 0;
+    let secondLargest = 0;
+    for(let i = 0; i<numbers.length; i++){
+        if(largest<numbers[i]){
+            secondLargest = largest;
+            largest= numbers[i];
+        } else if (secondLargest < numbers[i] && numbers[i] !== largest) {
+            secondLargest = numbers[i];
+        }
+    }
+    console.log(secondLargest);
+});
+
+test('Count occurrences of a number', () => {
+    let numbers = [10, 20, 10, 30, 40, 10, 50, 20];
+    let find = 70;
+    let occurrences = 0;
+
+    for(let i = 0; i<numbers.length; i++){
+        if(find==numbers[i]){
+            occurrences++;
+        }
+    }
+    console.log(occurrences);
+});
+
+test('Find the first duplicate number chatgpt solutino: not working', () => {
+    let numbers = [5, 8, 3, 9, 8, 2, 7, 5, 8];
+    let duplicate = 0;
+    let found = false;
+    for(let i = 0; i < numbers.length; i++){
+        for(let j = i+1; j < numbers.length; j++){
+            if(numbers[i]===numbers[j]){
+                duplicate = numbers[i];
+                found = true;
+                break;
+            }
+        }
+        if(found){
+            break;
+        }
+    }
+    console.log(duplicate);
+});
+
+test('Find the first duplicate number gemini solution: working', () => {
+        let numbers =[5, 8, 3, 9, 6, 2, 7, 5, 8];
+        let seenNumbers = new Set();
+        let duplicate = null; // 1. Create a variable to hold the duplicate value
+    
+        for (let i = 0; i < numbers.length; i++) {
+            if (seenNumbers.has(numbers[i])) {
+                duplicate = numbers[i]; // 2. Assign the value to our variable
+                break;                  // 3. Use 'break' instead of 'return' to stop the loop
+            }
+            seenNumbers.add(numbers[i]);
+        }
+    
+        console.log(duplicate); // 4. This will now successfully print: 8
+});
+
+test('Reverse an array', () => {
+    let numbers = [10, 20, 30, 40, 50];
+    let reverse = [];
+    for(let i = numbers.length-1; i>=0; i--){
+        reverse.push(numbers[i]);
+    }
+    console.log(reverse);
+});
+
+test.only('Find the average of numbers', () => {
+    let numbers = [10, 20, 30, 40, 50, 60, 70];
+    let sum = 0;
+    for(let i = 0; i<numbers.length; i++){
+        sum = sum + numbers[i];
+    }
+    let average = sum / numbers.length;
+    console.log(average);
+});
+
+test.only('Find numbers greater than the average', () => {
+    let numbers = [10, 25, 40, 15, 60, 30, 5];
+});
