@@ -259,7 +259,7 @@ test('Reverse an array', () => {
     console.log(reverse);
 });
 
-test.only('Find the average of numbers', () => {
+test('Find the average of numbers', () => {
     let numbers = [10, 20, 30, 40, 50, 60, 70];
     let sum = 0;
     for(let i = 0; i<numbers.length; i++){
@@ -269,6 +269,235 @@ test.only('Find the average of numbers', () => {
     console.log(average);
 });
 
-test.only('Find numbers greater than the average', () => {
+test('Find numbers greater than the average', () => {
     let numbers = [10, 25, 40, 15, 60, 30, 5];
+    let sum = 0;
+    for(let i = 0; i<numbers.length; i++){
+        sum += numbers[i];
+    }
+    let average = sum / numbers.length;
+    console.log(average);
+    let greater = [];
+    for(let i = 0; i<numbers.length; i++){
+        if(numbers[i]>average){
+            greater.push(numbers[i]);
+        }
+    }
+    console.log(greater);
+});
+
+test('Find the difference between largest and smallest', () => {
+    let numbers = [23, 8, 45, 12, 67, 4, 31];
+    let largest = numbers[0];
+    let smallest = numbers[0];
+    for(let i = 1; i<numbers.length; i++){
+        if(largest<numbers[i]){
+            largest = numbers[i];
+        }
+        if(smallest>numbers[i]){
+            smallest = numbers[i];
+        }
+    }
+    console.log(largest - smallest);
+});
+
+test('Count numbers greater than a given number', () => {
+    let numbers = [12, 45, 7, 89, 23, 56, 34, 78];
+    let target = 40;
+    // let given = [];
+    let count = 0;
+    for(let i = 0; i<numbers.length; i++){
+        if(numbers[i]>target){
+            count++;
+        }
+    }
+    console.log(count);
+});
+
+test('Count numbers smaller than a given number', () => {
+    let numbers = [18, 5, 42, 9, 31, 14, 50, 7, 26];
+    let target = 20;
+    // let given = [];
+    let count = 0;
+    for(let i = 0; i<numbers.length; i++){
+        if(numbers[i]<target){
+            count++;
+        }
+    }
+    console.log(count);
+});
+
+
+test('Find the first even number', () => {
+    let numbers = [15, 27, 33, 41, 18, 52, 64];
+    for(let i = 0; i<numbers.length; i++){
+        if(numbers[i]%2==0){
+            console.log(numbers[i]);
+            break;
+        }
+    }
+});
+
+test('Find the first number greater than a target', () => {
+    let numbers = [12, 18, 25, 31, 9, 45, 52];
+    let target = 30;
+    for(let i = 0; i<numbers.length; i++){
+        if(numbers[i]>target){
+            console.log(numbers[i]);
+            break;
+        }
+    }
+});
+
+test('Find the index of a given number', () => {
+    let numbers = [15, 28, 42, 7, 63, 19, 34];
+    let target = 63;
+    for(let i = 0; i<numbers.length; i++){
+        if(numbers[i]==target){
+            console.log(i);
+            break;
+        }
+    }
+});
+
+test('Count the number of vowels in a string', () => {
+    let text = "javascript";
+    let vowels = ['a', 'e', 'i', 'o', 'u'];
+    let count = 0;
+    for(let i = 0; i<text.length; i++){
+        if(vowels.includes(text[i])){
+            count++;
+        }
+    }
+    console.log(count);
+});
+
+test('Count consonants in a string', () => {
+    let text = "automation";
+    let vowels = ['a', 'e', 'i', 'o', 'u'];
+    let count = 0;
+    for(let i = 0; i<text.length; i++){
+        if(!vowels.includes(text[i])){
+            count++;
+        }
+    }
+    console.log(count);
+});
+
+test('Reverse a string', () => {
+    let text = "automation";
+    let reverse = "";
+    for(let i = text.length - 1; i>=0; i--){
+        reverse += text[i];
+    }
+    console.log(reverse);
+});
+
+test('Count a specific character', () => {
+    let text = "programming";
+    let target = "g";
+    let count = 0;
+    for(let i =0; i<text.length; i++){
+        if(target.includes(text[i])){
+            count++;
+        }
+        // if(target == text[i]){
+        //     count++;
+        // }
+    }
+    console.log(count);
+});
+
+test('Count words in a sentence', () => {
+    let text = "I am learning Playwright automation";
+    let words = text.split(" ");
+    console.log(words.length);
+});
+
+test('Find the longest word', () => {
+    let text = "I am learning Playwright automation";
+    let words = text.split(" ");
+    let longest = words[0];
+    for(let i = 1; i<words.length; i++){
+        if(longest.length<words[i].length){
+            longest = words[i];
+        }
+    }
+    console.log(longest);
+});
+
+test('Find the shortest word', () => {
+    let text = "I am learning Playwright automation";
+    let words = text.split(" ");
+    let longest = words[0];
+    for(let i = 1; i<words.length; i++){
+        if(longest.length>words[i].length){
+            longest = words[i];
+        }
+    }
+    console.log(longest);
+});
+
+test('Count words starting with a specific letter', () => {
+    let text = "apple banana avocado mango apricot orange assess";
+    let target = "a";
+    let words = text.split(" ");
+    let count = 0;
+    for(let i =0; i<words.length; i++){
+        // if(target == words[i][0]){
+        //     count++;
+        // }
+        if(words[i].startsWith(target)){
+            count++;
+        }
+    }
+    console.log(count);
+});
+
+test('Remove spaces from a string', () => {
+    let text = "I am learning JavaScript";
+    let noSpace = text.split(" ");
+    let result = "";
+    for(let i = 0; i<noSpace.length; i++){
+        result += noSpace[i];
+    }
+    console.log(result);
+});
+
+test('Count spaces in a string', () => {
+    let text = " Iam learn  ing  JavaScript ";
+    let count = 0;
+    for(let i = 0; i<text.length; i++){
+        if(text[i] == " "){
+            count++;
+        }
+    }
+    console.log(count);
+});
+
+test.only('Half reverse a string', () => {
+    let text = "rajeev";
+    let textHalfCount = text.length/2;
+    let textHalf11 = "";
+    let textHalf22 = "";
+    for(let i = 0; i<textHalfCount; i++){
+            textHalf11 += text[i];
+    }
+    for(let i = textHalfCount; i<text.length; i++){
+        textHalf22 += text[i];
+    }
+    // console.log(textHalf11);
+    // console.log(textHalf22);
+    // let textHalf1 = text.slice(0, textHalfCount);
+    // let textHalf2 = text.slice(textHalfCount);
+    let textHalfReverse = "";
+    for(let i = textHalf11.length-1; i>=0; i--){
+        textHalfReverse += textHalf11[i];
+    }
+    console.log(textHalfReverse + textHalf22);
+});
+
+test.only('Reverse last two characters', () => {
+    let text = "rajeev"; //output: rajeev to rajeve
+
 });
