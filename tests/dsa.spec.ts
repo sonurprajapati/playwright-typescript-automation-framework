@@ -475,7 +475,7 @@ test('Count spaces in a string', () => {
     console.log(count);
 });
 
-test.only('Half reverse a string', () => {
+test('Half reverse a string', () => {
     let text = "rajeev";
     let textHalfCount = text.length/2;
     let textHalf11 = "";
@@ -497,7 +497,84 @@ test.only('Half reverse a string', () => {
     console.log(textHalfReverse + textHalf22);
 });
 
-test.only('Reverse last two characters', () => {
-    let text = "rajeev"; //output: rajeev to rajeve
+test('Reverse last two characters', () => {
+    let text = "rajeev";
+    let remainglength = text.length-2;
+    let textHalf1 = "";
+    for(let i =0; i<remainglength; i++){
+        textHalf1 += text[i];
+    }
+    let textHalf2 = "";
+    for(let i=remainglength; i<text.length; i++){
+        textHalf2 += text[i];
+    }
+    let textHalf2Reverse = "";
+    for(let i =textHalf2.length-1; i>=0; i--){
+        textHalf2Reverse += textHalf2[i];
+    }
+    console.log(textHalf1 + textHalf2Reverse);
+});
 
+test('Find Duplicate numbers in an array', () => {
+    const arr = [4, 2, 7, 2, 8, 4, 9, 7];
+
+    let duplicate = [];
+    for(let i = 0; i<arr.length; i++){
+        for(let j = i+1; j<arr.length; j++){
+            if(arr[i]==arr[j]){
+                duplicate.push(arr[i]);
+                break;
+            }
+        }
+    }
+    console.log(duplicate);
+});
+
+test('Find the longest string in an array', () => {
+    let words = ["cat", "elephant", "dog", "tiger", "butterfly"];
+    let longest = words[0];
+    for(let i = 1; i<words.length; i++){
+        if(longest.length<words[i].length){
+            longest = words[i];
+        }
+    }
+    console.log(longest);
+    
+});
+
+test('Count strings longer than a given length', () => {
+    let words = ["cat", "elephant", "dog", "tiger", "butterfly", "ox", "computer"];
+    let targetLength = 5;
+    let count = 0;
+    for(let i=0; i<words.length; i++){
+        if(words[i].length>targetLength){
+            count++;
+        }
+    }
+    console.log(count);
+});
+
+test('Find the shortest string in an array', () => {
+    let words = ["apple", "kiwi", "banana", "fig", "orange", "pear"];
+    let shortest = words[0];
+    for(let i=1; i<words.length; i++){
+        if(shortest.length>words[i].length){
+            shortest = words[i];
+        }
+    }
+    console.log(shortest);
+});
+
+test.only('Find strings starting with a specific letter', () => {
+    let words = ["apple", "banana", "avocado", "mango", "apricot", "orange"];
+    let target = "a";
+    let count = 0;
+    let strings = [];
+    for(let i=0; i<words.length; i++){
+        if(words[i][0]==target){
+            count++;
+            strings.push(words[i]);
+        }
+    }
+    console.log(strings);
 });
