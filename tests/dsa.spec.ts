@@ -565,7 +565,7 @@ test('Find the shortest string in an array', () => {
     console.log(shortest);
 });
 
-test.only('Find strings starting with a specific letter', () => {
+test('Find strings starting with a specific letter', () => {
     let words = ["apple", "banana", "avocado", "mango", "apricot", "orange"];
     let target = "a";
     let count = 0;
@@ -577,4 +577,39 @@ test.only('Find strings starting with a specific letter', () => {
         }
     }
     console.log(strings);
+});
+
+test('Find and Count duplicate strings', () => {
+    let words = ["apple", "banana", "apple", "orange", "banana", "mango"];
+    let final = [];
+    let count = 0;
+    for(let i = 0; i<words.length; i++){
+        for(let j = i+1; j<words.length; j++){
+            if(words[i] === words[j]){
+                final.push(words[i]);
+                count++;
+                break;
+            }
+        }
+    }
+    console.log(final);
+    console.log(count);
+});
+
+test.only('Find the longest string starting with a specific letter', () => {
+    let words = ["mangoose", "apple", "banana", "avocado", "mango", "apricot", "application", "brothers"];
+    let target = "m";
+    let newArr = [];
+    for(let i=0; i<words.length; i++){
+        if(target === words[i][0]){
+            newArr.push(words[i]);
+        }
+    }
+    let longest = newArr[0];
+    for(let i=1; i<newArr.length; i++){
+        if(longest.length<newArr[i].length){
+            longest = newArr[i];
+        }
+    }
+    console.log(longest);
 });
