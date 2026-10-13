@@ -596,7 +596,7 @@ test('Find and Count duplicate strings', () => {
     console.log(count);
 });
 
-test.only('Find the longest string starting with a specific letter', () => {
+test('Find the longest string starting with a specific letter', () => {
     let words = ["mangoose", "apple", "banana", "avocado", "mango", "apricot", "application", "brothers"];
     let target = "m";
     let newArr = [];
@@ -612,4 +612,111 @@ test.only('Find the longest string starting with a specific letter', () => {
         }
     }
     console.log(longest);
+});
+
+test('Find the first string with a specific length', () => {
+    let words = ["cat", "apples", "doges", "banana", "tiger", "sun"];
+    let targetLength = 5;
+    let target = '';
+    for(let i = 0; i<words.length; i++){
+        if(words[i].length == targetLength){
+            target = words[i];
+            break
+        }
+    }
+    console.log(target);
+
+});
+
+test('Count strings containing a specific character', () => {
+    let words = ["apple", "banana", "grapes", "mango", "orange", "kiwi"];
+    let target = "a";
+    let count = 0;
+    for(let i=0; i<words.length; i++){
+        if(words[i].includes(target)){
+            count++
+        }
+    }
+    console.log(count);
+});
+
+test('Find the word with the most vowels', () => {
+    let words = ["sky", "apple", "education", "banana", "computer"];
+    let vowels = ['a', 'e', 'i', 'o', 'u'];
+    let vowelArr = [];
+    let mostVowelWord = '';
+    let mostVowelCount = 0;
+    for(let i=0; i<words.length; i++){
+        for (let j=0; j<words[i].length; j++){
+            for(let k=0; k<vowels.length; k++){
+                if(words[i][j]===vowels[k]){
+                    mostVowelCount++;
+                }
+            } 
+        }
+        vowelArr.push(mostVowelCount);
+        mostVowelCount = 0;
+    }
+    let maxIndex = 0;
+    let max = vowelArr[0];
+    for(let i=1; i<vowelArr.length; i++){
+        if(vowelArr[i]>max){
+            max = vowelArr[i];
+            maxIndex = i;
+        }
+    }
+    console.log(words[maxIndex]);
+});
+
+test('Find the second-longest string', () => {
+    let words = ["cat", "elephant", "tiger", "butterfly", "dog", "computer"];
+    let wordsLen: number[] = [];
+    for(let i=0; i<words.length; i++){
+        wordsLen.push(words[i].length);
+    }
+    let wordsLenSorted = [...wordsLen];
+    for(let i=0; i<wordsLenSorted.length; i++){
+        for(let j=i+1; j<wordsLenSorted.length; j++){
+            if(wordsLenSorted[i]>wordsLenSorted[j]){
+                let temp = wordsLenSorted[i];
+                wordsLenSorted[i] = wordsLenSorted[j];
+                wordsLenSorted[j] = temp;
+            }
+        }
+    }
+    console.log(words[wordsLen.indexOf(wordsLenSorted[wordsLenSorted.length-2])]);
+});
+
+test('Find the second-longest string without sorting', () => {
+    let words = ["cat", "elephant", "tiger", "butterfly", "dog", "computer"];
+    let wordsLen: number[] = [];
+    for(let i=0; i<words.length; i++){
+        wordsLen.push(words[i].length);
+    }
+    let largest = 0;
+    let secondLargest = 0;
+    for(let i=1; i<wordsLen.length; i++){
+        if(largest<wordsLen[i]){
+            secondLargest = largest;
+            largest = wordsLen[i];
+        }else if(secondLargest<wordsLen[i] && wordsLen[i]!==largest){
+            secondLargest = wordsLen[i];
+        }
+    }
+    console.log(words[wordsLen.indexOf(secondLargest)]);
+});
+   
+test.only('Find the odd even characters in a string in separate arrays', () => {
+    let str = "something";
+    let odd = '';
+    let even = '';
+    for(let i=0; i<str.length; i++){
+        if(i%2===0){
+            odd = odd + str[i];
+        }else{
+            even = even + str[i];
+        }
+    }
+    console.log(odd);
+    console.log(even);
 });
